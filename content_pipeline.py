@@ -289,9 +289,7 @@ tags: [{tags_str}]
 keywords: ["{keyword}"]
 image: "/assets/images/default-pin.png"
 pin_image: "{pin_image}"
-seo:
-  title: "{article.get('seo_title', article['title'])}"
-  description: "{article.get('seo_description', article.get('excerpt', ''))}"
+description: "{article.get('seo_description', article.get('excerpt', ''))}"
 ---"""
 
 
