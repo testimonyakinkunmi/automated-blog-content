@@ -1,7 +1,7 @@
-<header class="site-header">
+<header class="site-header" id="site-header">
   <div class="container header-inner">
     <a href="{{ '/' | relative_url }}" class="site-logo">
-      <span class="logo-icon">💰</span>
+      <span class="logo-icon">$</span>
       <span class="logo-text">{{ site.title }}</span>
     </a>
 
@@ -16,3 +16,8 @@
     </nav>
   </div>
 </header>
+<script>
+window.addEventListener('scroll', function() {
+  document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 10);
+});
+</script>
