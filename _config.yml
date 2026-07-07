@@ -2,7 +2,6 @@
 # SITE IDENTITY
 # =============================================================
 title: "Smart Cents Hub"
-theme: null
 description: "Practical money-saving tips, budgeting tools, and side hustle strategies to help you keep more of what you earn."
 url: ""                                    # ← PASTE YOUR LIVE URL (e.g. https://smartcentshub.com)
 baseurl: ""                                # ← LEAVE EMPTY for root deploy; set to /repo-name if using project-site
@@ -52,6 +51,11 @@ adsense_client: "ca-pub-XXXXXXXXXX"        # ← PASTE your AdSense Publisher ID
 # =============================================================
 # BUILD SETTINGS
 # =============================================================
+# CRITICAL: theme MUST be null — the github-pages gem tries to force
+# jekyll-theme-primer which overwrites your custom _layouts/.
+# Setting it to null tells Jekyll to use YOUR layouts only.
+theme: null
+
 markdown: kramdown
 kramdown:
   input: GFM
