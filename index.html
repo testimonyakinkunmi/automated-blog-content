@@ -1,29 +1,91 @@
 ---
 layout: default
-title: "Smart Money Tips & Budget Hacks"
+title: "{{ site.title }} — {{ site.description }}"
+description: "{{ site.description }}"
 ---
 
-<h1>Welcome to the Blog</h1>
-<p>Save Smarter. Earn More. Keep More of What's Yours.</p>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container hero-inner">
+    <h1 class="hero-title">Save Smarter.<br>Earn More.<br>Keep More of What's Yours.</h1>
+    <p class="hero-subtitle">{{ site.description }}</p>
+    <div class="hero-actions">
+      <a href="{{ '/blog/' | relative_url }}" class="btn btn-primary">Browse Articles</a>
+      {% if site.author.pinterest %}
+      <a href="{{ site.author.pinterest }}" target="_blank" rel="noopener" class="btn btn-outline">Follow on Pinterest</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
 
-<h2>Latest Articles</h2>
-<ul>
-  {% for post in site.posts limit:3 %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      <br>
-      <small>{{ post.date | date: "%B %d, %Y" }}</small>
-    </li>
-  {% endfor %}
-</ul>
+<!-- Top Ad -->
+<div class="container">
+  {% include ad-slot.html slot_id="home-top" %}
+</div>
 
-<h2>All Other Articles</h2>
-<ul>
-  {% for post in site.posts offset:3 %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      <br>
-      <small>{{ post.date | date: "%B %d, %Y" }}</small>
-    </li>
-  {% endfor %}
-</ul>
+<!-- Featured Posts -->
+{% assign featured = site.posts | sort: "date" | reverse | first: 3 %}
+{% if featured.size > 0 %}
+<section class="section featured-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Latest Articles</h2>
+      <p class="section-subtitle">Fresh strategies to grow your money</p>
+    </div>
+    <div class="featured-grid">
+      {% for post in featured %}
+      <a href="{{ post.url | relative_url }}" class="featured-card">
+        <div class="featured-card-img" style="background-image: url('{{ post.pin_image | default: post.image | absolute_url }}');">
+          <span class="featured-card-tag">{{ post.tags.first | default: "Finance" }}</span>
+        </div>
+        <div class="featured-card-body">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 20 }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Category Grid (all remaining posts) -->
+{% assign remaining = site.posts | sort: "date" | reverse | slice: 3, 100 %}
+{% if remaining.size > 0 %}
+<section class="section posts-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">All Articles</h2>
+      <a href="{{ '/blog/' | relative_url }}" class="section-link">View All →</a>
+    </div>
+    <div class="post-grid">
+      {% for post in remaining %}
+      <a href="{{ post.url | relative_url }}" class="post-card">
+        <div class="post-card-img" style="background-image: url('{{ post.pin_image | default: post.image | absolute_url }}');"></div>
+        <div class="post-card-body">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
+          <h3>{{ post.title }}</h3>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Mid-page Ad -->
+<div class="container">
+  {% include ad-slot.html slot_id="home-mid" %}
+</div>
+
+<!-- Pinterest CTA -->
+<section class="section pinterest-section">
+  <div class="container pinterest-cta-home">
+    <h2>Get New Tips Every Week</h2>
+    <p>Follow us on Pinterest for daily money-saving hacks and budget printables.</p>
+    {% if site.author.pinterest %}
+    <a href="{{ site.author.pinterest }}" target="_blank" rel="noopener" class="btn btn-pinterest-lg">Follow on Pinterest</a>
+    {% endif %}
+  </div>
+</section>
