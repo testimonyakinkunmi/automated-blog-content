@@ -1,0 +1,51 @@
+# ===========================================================
+# Python artefacts
+# ===========================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Pipeline output (local only — do not commit generated pins)
+pin_images/
+pin_metadata.json
+keywords_research.json
+*.csv
+
+# ===========================================================
+# Jekyll / Ruby
+# ===========================================================
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+vendor/
+Gemfile.lock
+
+# ===========================================================
+# OS junk
+# ===========================================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===========================================================
+# IDE / editor
+# ===========================================================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log

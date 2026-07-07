@@ -1,0 +1,102 @@
+# =============================================================
+# SITE IDENTITY
+# =============================================================
+title: "Smart Cents Hub"
+description: "Practical money-saving tips, budgeting tools, and side hustle strategies to help you keep more of what you earn."
+url: ""                                    # ← PASTE YOUR LIVE URL (e.g. https://smartcentshub.com)
+baseurl: ""                                # ← LEAVE EMPTY for root deploy; set to /repo-name if using project-site
+timezone: UTC
+language: en
+
+# =============================================================
+# AUTHOR
+# =============================================================
+author:
+  name: "Smart Cents Hub"
+  email: "hello@smartcentshub.com"
+  bio: "We break down personal finance into simple, actionable steps. No jargon — just real strategies that actually work."
+  avatar: "/assets/images/avatar.png"
+  pinterest: "https://pinterest.com/smartcentshub"
+
+# =============================================================
+# NAVIGATION
+# =============================================================
+nav:
+  - label: "Home"
+    url: "/"
+  - label: "Blog"
+    url: "/blog/"
+  - label: "Privacy Policy"
+    url: "/privacy-policy/"
+  - label: "Terms"
+    url: "/terms-of-service/"
+  - label: "Contact"
+    url: "/contact/"
+
+# =============================================================
+# PINTEREST & SOCIAL VERIFICATION
+# =============================================================
+pinterest_verify: ""                       # ← PASTE your Pinterest domain-verification meta tag CONTENT value
+twitter:
+  username: ""                             # ← without @
+instagram:
+  username: ""
+
+# =============================================================
+# ANALYTICS & MONETISATION
+# =============================================================
+google_analytics: "G-XXXXXXXXXX"           # ← PASTE your GA4 Measurement ID
+adsense_client: "ca-pub-XXXXXXXXXX"        # ← PASTE your AdSense Publisher ID
+
+# =============================================================
+# BUILD SETTINGS
+# =============================================================
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+
+permalink: /:year/:month/:day/:title/
+
+# GitHub Pages–whitelisted plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-redirect-from
+
+# Exclude auxiliary files from the Jekyll build output
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - content_pipeline.py
+  - bulk_pin_creator.py
+  - pinterest_keyword_research.py
+  - keywords.txt
+  - pin_images/
+  - pin_metadata.json
+  - keywords_research.json
+  - "*.py"
+  - "*.json"
+  - ".env"
+  - ".github/"
+  - "scripts/"
+
+# =============================================================
+# DEFAULTS — front-matter values injected automatically
+# =============================================================
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      image: "/assets/images/default-pin.png"
+      author: "Smart Cents Hub"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"

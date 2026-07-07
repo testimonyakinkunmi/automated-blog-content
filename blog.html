@@ -1,0 +1,36 @@
+---
+layout: default
+title: "Blog — All Articles"
+seo:
+  title: "Blog | {{ site.title }}"
+  description: "Browse all articles — budgeting tips, side hustle ideas, money-saving tools, and personal finance guides."
+---
+
+<section class="section blog-listing">
+  <div class="container">
+    <div class="section-header">
+      <h1 class="section-title">All Articles</h1>
+      <p class="section-subtitle">{{ site.posts.size }} articles and counting</p>
+    </div>
+
+    {% if site.posts.size > 0 %}
+    <div class="post-grid">
+      {% for post in site.posts %}
+      <a href="{{ post.url | relative_url }}" class="post-card">
+        <div class="post-card-img" style="background-image: url('{{ post.pin_image | default: post.image | absolute_url }}');"></div>
+        <div class="post-card-body">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.description | default: post.excerpt | strip_html | truncatewords: 18 }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <h2>No articles yet</h2>
+      <p>Articles will appear here once you run the content pipeline.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>

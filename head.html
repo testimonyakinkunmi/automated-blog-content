@@ -1,0 +1,50 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>{% if page.seo.title %}{{ page.seo.title }}{% elsif page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</title>
+  <meta name="description" content="{% if page.seo.description %}{{ page.seo.description }}{% elsif page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+
+  <!-- Pinterest Domain Verification -->
+  {% if site.pinterest_verify != "" %}
+  <meta name="p:domain_verify" content="{{ site.pinterest_verify }}">
+  {% endif %}
+
+  <!-- Google Analytics 4 -->
+  {% if site.google_analytics != "G-XXXXXXXXXX" %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', '{{ site.google_analytics }}');
+  </script>
+  {% endif %}
+
+  <!-- AdSense -->
+  {% if site.adsense_client != "ca-pub-XXXXXXXXXX" %}
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client={{ site.adsense_client }}" crossorigin="anonymous"></script>
+  {% endif %}
+
+  <!-- jekyll-seo-tag (generates og:*, twitter:*, canonical) -->
+  {% seo %}
+
+  <!-- Override og:image with page.pin_image if available (taller image for Pinterest) -->
+  {% if page.pin_image %}
+  <meta property="og:image" content="{{ page.pin_image | absolute_url }}">
+  <meta property="og:image:width" content="1000">
+  <meta property="og:image:height" content="1500">
+  {% endif %}
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💰</text></svg>">
+</head>

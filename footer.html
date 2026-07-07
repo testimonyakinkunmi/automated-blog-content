@@ -1,0 +1,28 @@
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>{{ site.title }}</h3>
+        <p>{{ site.description }}</p>
+      </div>
+      <div class="footer-links">
+        <h4>Pages</h4>
+        {% for item in site.nav %}
+        <a href="{{ item.url | relative_url }}">{{ item.label }}</a>
+        {% endfor %}
+      </div>
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        {% if site.author.pinterest %}
+        <a href="{{ site.author.pinterest }}" target="_blank" rel="noopener">Pinterest</a>
+        {% endif %}
+        {% if site.twitter.username %}
+        <a href="https://twitter.com/{{ site.twitter.username }}" target="_blank" rel="noopener">Twitter</a>
+        {% endif %}
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {{ "now" | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

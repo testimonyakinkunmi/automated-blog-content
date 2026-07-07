@@ -1,0 +1,15 @@
+# Pinterest keyword seeds — one per line
+# Lines starting with # are ignored by the pipeline
+# Use the keyword research tool to expand these:
+#   python pinterest_keyword_research.py --seeds-file keywords.txt --depth 2 --output keywords_research.json
+
+budget planner printable
+side hustle ideas from home
+money saving tips monthly
+easy budgeting methods for beginners
+how to save money on groceries
+best expense tracker apps
+digital budget template free
+cash envelope system guide
+financial goals worksheet
+biweekly budget planner tips

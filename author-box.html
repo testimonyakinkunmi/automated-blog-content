@@ -1,0 +1,16 @@
+<div class="author-box">
+  <div class="author-avatar">
+    {% if site.author.avatar %}
+    <img src="{{ site.author.avatar | relative_url }}" alt="{{ site.author.name }}" loading="lazy">
+    {% else %}
+    <div class="author-avatar-fallback">{{ site.author.name | slice: 0 }}</div>
+    {% endif %}
+  </div>
+  <div class="author-info">
+    <h4>Written by {{ site.author.name }}</h4>
+    <p>{{ site.author.bio }}</p>
+    {% if site.author.pinterest %}
+    <a href="{{ site.author.pinterest }}" target="_blank" rel="noopener" class="author-link">Follow on Pinterest →</a>
+    {% endif %}
+  </div>
+</div>

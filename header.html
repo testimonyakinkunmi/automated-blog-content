@@ -1,0 +1,18 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="{{ '/' | relative_url }}" class="site-logo">
+      <span class="logo-icon">💰</span>
+      <span class="logo-text">{{ site.title }}</span>
+    </a>
+
+    <button class="mobile-toggle" aria-label="Toggle navigation" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="nav-links">
+      {% for item in site.nav %}
+      <a href="{{ item.url | relative_url }}" class="nav-link{% if page.url == item.url %} active{% endif %}">{{ item.label }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>
