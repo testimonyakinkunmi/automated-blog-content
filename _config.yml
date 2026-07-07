@@ -54,7 +54,7 @@ adsense_client: "ca-pub-XXXXXXXXXX"        # ← PASTE your AdSense Publisher ID
 # CRITICAL: theme MUST be null — the github-pages gem tries to force
 # jekyll-theme-primer which overwrites your custom _layouts/.
 # Setting it to null tells Jekyll to use YOUR layouts only.
-theme: null
+remote_theme: https://github.com/codebygina/affiliates-jekyll-theme
 
 markdown: kramdown
 kramdown:
