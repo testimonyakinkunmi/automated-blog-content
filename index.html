@@ -16,6 +16,46 @@ description: "Practical money-saving tips, budgeting tools, and side hustle stra
   </div>
 </section>
 
+<!-- Featured Posts -->
+{% if site.posts.size > 0 %}
+<section class="section featured-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Latest Articles</h2>
+      <p class="section-subtitle">Fresh tips to help you save, earn, and build wealth.</p>
+    </div>
+    <div class="featured-grid">
+      {% assign featured = site.posts | sort: 'date' | reverse | slice: 0, 3 %}
+      {% for post in featured %}
+      <a href="{{ post.url | relative_url }}" class="featured-card">
+        {% if post.image %}
+        <div class="featured-card-img" style="background-image:url('{{ post.image | absolute_url }}');">
+          {% if post.category %}
+          <span class="featured-card-tag">{{ post.category }}</span>
+          {% endif %}
+        </div>
+        {% else %}
+        <div class="featured-card-img" style="background:linear-gradient(135deg,#1A6B52,#0F4A38);">
+          {% if post.category %}
+          <span class="featured-card-tag">{{ post.category }}</span>
+          {% endif %}
+        </div>
+        {% endif %}
+        <div class="featured-card-body">
+          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.description }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="/blog/" class="btn btn-primary">View All Articles &rarr;</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <!-- Pinterest CTA -->
 <section class="pinterest-section">
   <div class="container pinterest-cta-home">
