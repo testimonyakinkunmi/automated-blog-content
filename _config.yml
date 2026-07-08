@@ -3,8 +3,8 @@
 # =============================================================
 title: "Smart Cents Hub"
 description: "Practical money-saving tips, budgeting tools, and side hustle strategies to help you keep more of what you earn."
-url: ""                                    # ← PASTE YOUR LIVE URL (e.g. https://smartcentshub.com)
-baseurl: ""                                # ← LEAVE EMPTY for root deploy; set to /repo-name if using project-site
+url: "https://testimonyakinkunmi.github.io"
+baseurl: "/automated-blog-content"
 timezone: UTC
 language: en
 
@@ -36,24 +36,21 @@ nav:
 # =============================================================
 # PINTEREST & SOCIAL VERIFICATION
 # =============================================================
-pinterest_verify: ""                       # ← PASTE your Pinterest domain-verification meta tag CONTENT value
+pinterest_verify: ""
 twitter:
-  username: ""                             # ← without @
+  username: ""
 instagram:
   username: ""
 
 # =============================================================
 # ANALYTICS & MONETISATION
 # =============================================================
-google_analytics: "G-XXXXXXXXXX"           # ← PASTE your GA4 Measurement ID
-adsense_client: "ca-pub-XXXXXXXXXX"        # ← PASTE your AdSense Publisher ID
+google_analytics: "G-XXXXXXXXXX"
+adsense_client: "ca-pub-XXXXXXXXXX"
 
 # =============================================================
 # BUILD SETTINGS
 # =============================================================
-# CRITICAL: theme MUST be null — the github-pages gem tries to force
-# jekyll-theme-primer which overwrites your custom _layouts/.
-# Setting it to null tells Jekyll to use YOUR layouts only.
 theme: null
 
 markdown: kramdown
@@ -64,14 +61,12 @@ kramdown:
 
 permalink: /:year/:month/:day/:title/
 
-# GitHub Pages–whitelisted plugins
 plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-redirect-from
 
-# Exclude auxiliary files from the Jekyll build output
 exclude:
   - README.md
   - Gemfile
@@ -89,9 +84,6 @@ exclude:
   - ".github/"
   - "scripts/"
 
-# =============================================================
-# DEFAULTS — front-matter values injected automatically
-# =============================================================
 defaults:
   - scope:
       path: ""
