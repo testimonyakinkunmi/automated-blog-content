@@ -16,7 +16,7 @@
         {% if site.author.pinterest %}
         <a href="{{ site.author.pinterest }}" target="_blank" rel="noopener">Pinterest</a>
         {% endif %}
-        {% if site.twitter.username %}
+        {% if site.twitter.username and site.twitter.username != "" %}
         <a href="https://twitter.com/{{ site.twitter.username }}" target="_blank" rel="noopener">Twitter</a>
         {% endif %}
       </div>
