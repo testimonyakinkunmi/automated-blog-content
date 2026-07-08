@@ -1,110 +1,29 @@
 <!DOCTYPE html>
-<html lang="{{ site.language | default: 'en' }}">
+<html lang="en">
   {% include head.html %}
-
-  {%- comment -%}
-    JSON-LD Structured Data for BlogPosting
-    Helps Google understand the article and enables rich results.
-  {%- endcomment -%}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": {{ page.title | jsonify }},
-    "description": {{ page.description | default: site.description | jsonify }},
-    "image": {{ page.pin_image | default: page.image | absolute_url | jsonify }},
-    "datePublished": "{{ page.date | date_to_xmlschema }}",
-    "dateModified": "{{ page.date | date_to_xmlschema }}",
-    "author": {
-      "@type": "Person",
-      "name": {{ site.author.name | jsonify }},
-      "url": "{{ site.author.pinterest | default: site.url }}"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": {{ site.title | jsonify }},
-      "logo": {
-        "@type": "ImageObject",
-        "url": "{{ '/assets/images/default-pin.png' | absolute_url }}"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "{{ page.url | absolute_url }}"
-    },
-    "keywords": {{ page.keywords | default: page.tags | join: ', ' | jsonify }}
-  }
-  </script>
-
   <body>
     {% include header.html %}
-
     <main class="site-main">
-      <article class="post-wrapper">
-        <div class="container post-layout">
-          <!-- Sidebar (desktop) -->
-          <aside class="post-sidebar">
-            {% include ad-slot.html slot_id="sidebar-top" %}
-            <div class="sidebar-widget">
-              <h3>Popular Posts</h3>
-              <ul class="popular-list">
-                {% assign popular = site.posts | sort: "date" | reverse | first: 5 %}
-                {% for p in popular %}
-                <li><a href="{{ p.url | relative_url }}">{{ p.title }}</a></li>
-                {% endfor %}
-              </ul>
-            </div>
-            {% include ad-slot.html slot_id="sidebar-bottom" %}
-          </aside>
-
-          <!-- Article -->
-          <div class="post-content-area">
-            <header class="post-header">
-              <div class="post-meta">
-                <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
-                {% if page.tags.size > 0 %}
-                <span class="meta-sep">·</span>
-                <span class="post-tags">
-                  {% for tag in page.tags limit: 3 %}
-                  <span class="tag">{{ tag }}</span>
-                  {% endfor %}
-                </span>
-                {% endif %}
-              </div>
-              <h1 class="post-title">{{ page.title }}</h1>
-              {% if page.description %}
-              <p class="post-description">{{ page.description }}</p>
-              {% endif %}
-            </header>
-
-            <!-- Top ad -->
-            {% include ad-slot.html slot_id="in-article-top" %}
-
-            <!-- Article body -->
-            <div class="post-body">
-              {{ content }}
-            </div>
-
-            <!-- Bottom ad -->
-            {% include ad-slot.html slot_id="in-article-bottom" %}
-
-            <!-- Author box -->
-            {% include author-box.html %}
-
-            <!-- Related posts -->
-            {%- assign related = site.posts | where_exp: "item", "item.tags != nil" | where_exp: "item", "item.url != page.url" | sample: 3 -%}
-            {% include related-posts.html related_posts=related %}
-
-            <!-- Pinterest CTA -->
-            <div class="pinterest-cta">
-              <p><strong>Found this helpful?</strong> Save it on Pinterest so you can find it later!</p>
-              <a href="https://pinterest.com/pin/create/button/?url={{ page.url | absolute_url }}&media={{ page.pin_image | default: page.image | absolute_url }}&description={{ page.title | url_encode }}" target="_blank" rel="noopener" class="btn-pinterest">Pin This Article</a>
-            </div>
+      <article class="article-content" style="max-width:760px;margin:0 auto;padding:48px 24px 80px;">
+        <header class="article-header" style="text-align:center;padding-bottom:40px;">
+          <h1>{{ page.title }}</h1>
+          {% if page.description %}
+          <p style="font-size:1.1rem;color:var(--clr-text-light);margin-top:12px;">{{ page.description }}</p>
+          {% endif %}
+          <div class="article-meta" style="margin-top:16px;">
+            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
           </div>
+        </header>
+        <div class="article-body">
+          {{ content }}
+        </div>
+        {% include author-box.html %}
+        <div class="pinterest-article-cta">
+          <p>Found this helpful? Save it on Pinterest!</p>
+          <a href="https://pinterest.com/pin/create/button/?url={{ page.url | absolute_url }}&description={{ page.title | url_encode }}" target="_blank" rel="noopener" class="btn btn-pinterest-lg">Pin This Article</a>
         </div>
       </article>
     </main>
-
     {% include footer.html %}
   </body>
 </html>
