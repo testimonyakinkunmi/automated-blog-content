@@ -285,11 +285,11 @@ layout: post
 title: "{article['title']}"
 date: {TODAY}
 description: "{article.get('excerpt', article.get('seo_description', ''))}"
+seo_description: "{article.get('seo_description', article.get('excerpt', ''))}"
 tags: [{tags_str}]
 keywords: ["{keyword}"]
 image: "/assets/images/default-pin.png"
 pin_image: "{pin_image}"
-description: "{article.get('seo_description', article.get('excerpt', ''))}"
 ---"""
 
 
