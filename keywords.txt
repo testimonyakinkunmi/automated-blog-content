@@ -3,7 +3,6 @@
 # Use the keyword research tool to expand these:
 #   python pinterest_keyword_research.py --seeds-file keywords.txt --depth 2 --output keywords_research.json
 
-side hustle ideas from home
 money saving tips monthly
 easy budgeting methods for beginners
 how to save money on groceries
