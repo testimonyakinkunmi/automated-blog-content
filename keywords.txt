@@ -3,7 +3,6 @@
 # Use the keyword research tool to expand these:
 #   python pinterest_keyword_research.py --seeds-file keywords.txt --depth 2 --output keywords_research.json
 
-how to save money on groceries
 best expense tracker apps
 digital budget template free
 cash envelope system guide
