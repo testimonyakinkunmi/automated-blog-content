@@ -3,6 +3,5 @@
 # Use the keyword research tool to expand these:
 #   python pinterest_keyword_research.py --seeds-file keywords.txt --depth 2 --output keywords_research.json
 
-cash envelope system guide
 financial goals worksheet
 biweekly budget planner tips
